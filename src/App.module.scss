@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'iranyekanwebregular';
+    src: local('iranyekanwebregular'),
+    url('./fonts/iranyekanwebregular.woff') format('woff');
+  }
+
+  .app {
+    font-family: 'iranyekanwebregular';
+    min-width: 992px;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+* a {
+  text-decoration: none;
+  color: rgb(179, 176, 176);
+  transition: color .6s ease,background-color .6s ease,box-shadow .6s ease,border-color .6s ease,transform .6s ease;
+}
+
+* ul {
+  padding: 0;
+}
