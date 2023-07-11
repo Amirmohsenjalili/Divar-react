@@ -3,6 +3,7 @@
     position: sticky;
     top: 0;
     background-color: #fff;
+    z-index: 5;
 }
 
 .logo {
@@ -24,6 +25,7 @@
     margin: 0 14px;
     transition: color .6s ease,background-color .6s ease,box-shadow .6s ease,border-color .6s ease,transform .6s ease;
     white-space: nowrap;
+    border-radius: 4px;
     
 }
 
@@ -68,7 +70,7 @@
 }
 
 .submitbtn {
-    background-color: #a62626;
+    background-color: #a62626!important;
     opacity: 1;
     color: #fff;
     padding: 0 16px;
@@ -110,7 +112,7 @@
     margin: 0 auto;
     padding: 0;
     position: relative;
-    z-index: -1;
+    z-index: 1;
 }
 
 .showCategory {
@@ -202,4 +204,104 @@
 
 .backdrop {
     backdrop-filter: blur(2px);    
+}
+
+.ThemeIcon {
+    background-color: #fff !important;
+    img{
+        width: 30px;
+    }
+}
+
+.ThemeIconClick {
+    background-color: #696565;
+    border-radius: 4px;
+    img{
+        width: 30px;
+        color: black;
+    }
+    
+}
+.dark {
+    .nav {
+        background-color: #696565 !important;
+
+    }
+    .navbtn {
+        background-color: #696565;
+        color: #fff;
+
+    }
+
+    .navbtn:hover {
+        background-color: rgba(247, 240, 240, 0.16);
+        border-radius: 4px;
+        color: rgba(53, 52, 52, 0.87);
+        opacity: 1;
+        transition: color .6s ease,background-color .6s ease,box-shadow .6s ease,border-color .6s ease,transform .6s ease;
+    }
+
+    .category {
+        background-color: #a4a4a4;
+        left: 0px;
+        // right: 700px;
+        color: #fff;
+        a {
+            color: #dbd3d3;
+        }
+
+    }
+    .imgCategory {
+       button {
+            background-color: #766e6e;
+        }    
+    }
+}
+
+@media (max-width: 1200px) {
+    .navbtn {
+        margin: 0 3px;
+    }
+    .browse {
+        min-width: 0;        
+    }
+    .category {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        width: 700px;
+    }
+}
+
+@media (max-width: 992px) {
+    .navLeft {
+        display: none;
+    }
+    .category {
+        display: none;
+    }
+    .browse {
+        min-width: 0;        
+    }
+}
+
+
+@media (max-width: 768px) {
+    .navHead{
+        display: flex;        
+        justify-content: center;
+        width: auto;
+    }
+
+
+    .browse {
+        min-width: 0;        
+    }
+}
+
+@media (max-width: 576px) {
+
+    .browse {
+        min-width: 0;        
+    }
 }

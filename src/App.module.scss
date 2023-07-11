@@ -10,6 +10,18 @@
     max-width: 1440px;
     margin: 0 auto;
     padding: 0;
+    height: 100vh;
+}
+
+.dark {
+  background-color: #696565;
+  font-family: 'iranyekanwebregular';
+  min-width: 992px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0;
+  height: 100vh;
+
 }
 
 * a {
@@ -21,3 +33,24 @@
 * ul {
   padding: 0;
 }
+
+@media (max-width: 1200px) {
+  .app {
+    min-width: 576px;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .app {
+    min-width: 0;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0;
+  }
+}
+
+
+

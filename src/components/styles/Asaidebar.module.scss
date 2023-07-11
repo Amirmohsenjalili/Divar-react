@@ -8,6 +8,7 @@
     font-size: .75rem;
     font-weight: 400;
     line-height: 2;
+    z-index: 0;
 }
 
 .asaideItem {
@@ -177,4 +178,74 @@
 
 .point {
   padding: 10px;
+}
+
+.showCategory {
+  position: fixed;
+  height: calc(100vh - 64px);
+  padding: 32px 16px 0 16px;
+  width: 280px;
+  top: 80px;
+  overflow: auto;
+  font-size: .75rem;
+  font-weight: 400;
+  line-height: 2;
+  z-index: -1;
+}
+
+.dark {
+  background-color: #696565;
+  color: #fff;
+  position: fixed;
+  height: calc(100vh - 64px);
+  padding: 32px 16px 0 16px;
+  width: 280px;
+  top: 80px;
+  overflow: auto;
+  font-size: .75rem;
+  font-weight: 400;
+  line-height: 2;
+  .asaideButtonItem {
+    background-color: #696565;
+    color: #ede3e3;
+    span {
+      color: #ede3e3;
+    }
+  }
+}
+
+@media (max-width:1400px) {
+  .showCategory{
+    padding: 0;
+    min-width: 0;
+    width:250px;
+    right: 0;
+  }
+  
+}
+
+@media (max-width: 1200px) {
+  .asaidebar {
+    padding: 0;
+  }
+  .showCategory{
+    padding: 0;
+    min-width: 0;
+    width:250px;
+    right: 0;
+  }
+}
+
+@media (max-width: 992px) {
+  .asaidebar {
+    min-width: 0;
+    width:250px;
+    right: 0;
+  }
+  .showCategory{
+    padding: 0;
+    min-width: 0;
+    width:250px;
+    right: 0;
+  }
 }
