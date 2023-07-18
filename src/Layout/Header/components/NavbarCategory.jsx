@@ -2,7 +2,8 @@ import React from 'react';
 import NavCategory from '../../../__mock__/NavCategory';
 import CardCategory from './CardCategory';
 import styles from '../styles.module.scss';
-import Home from '../../../../images/ctg.png'
+import Home from '../../../assets/images/ctg.png'
+import Buttons from '../../../components/atoms/Button/Buttons';
 
 const NavbarCategory = () => {
 
@@ -12,7 +13,8 @@ const NavbarCategory = () => {
             {NavCategory.map(i => <CardCategory key={i.id} headCtg={i.title} item={i.items}/>)}
             <div className={styles.imgCategory}>
                 <img src={Home} alt='home'/>
-                <button>  همه ی آگهی های دیوار  </button>
+                {/* <button>  همه ی آگهی های دیوار  </button> */}
+                <Buttons>  همه ی آگهی های دیوار  </Buttons>
             </div>
         </div>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/Main.module.scss'
+import styles from '../../../assets/styles/Main.module.scss'
 
 
 const CardMain = ({title, category, price, image}) => {

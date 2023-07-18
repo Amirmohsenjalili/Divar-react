@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from 'react';
-import products from './__mock__/Products';
-import CardMain from './Main/cardMain';
-import styles from './styles/Main.module.scss';
+import products from '../../../__mock__/Products';
+import CardMain from './cardMain';
+import styles from '../../../assets/styles/Main.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCards } from '../features/cards/cardsSlice';
+import { fetchCards } from '../../../features/cards/cardsSlice';
 
 // context
-import { ThemeContext } from '../context/ThemeContextProvider';
+import { ThemeContext } from '../../../context/ThemeContextProvider';
 
 const Main = () => {
 

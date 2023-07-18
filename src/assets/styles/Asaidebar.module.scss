@@ -19,6 +19,9 @@
     opacity: 0.4;
     transition: color .6s ease,background-color .6s ease,box-shadow .6s ease,border-color .6s ease,transform .6s ease;
     height: 35px;
+    background-color: #fff;
+    border: none;
+    font-family: 'iranyekanwebregular';
 }
 
 .asaideItem:hover{
@@ -212,6 +215,22 @@
       color: #ede3e3;
     }
   }
+  .conteiner {
+    background-color: #696565;
+    color: #fff;
+  }
+  .asaideItem {
+    background-color: #696565;
+    color: #fff;
+  }
+}
+
+.conteiner {
+  background-color: #fff;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  font-family: 'iranyekanwebregular';
 }
 
 @media (max-width:1400px) {

@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import styles from './dark.module.scss'
 
-import { ThemeContext } from "../../context/ThemeContextProvider";
+import { ThemeContext } from "../context/ThemeContextProvider";
 
 const Layout = ({children}) => {
 

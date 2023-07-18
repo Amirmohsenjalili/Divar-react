@@ -1,8 +1,8 @@
 import styles from './App.module.scss'
-import Main from './components/Main';
-import Asaide from './components/Asaide';
-import Layout from './components/Layout';
-import Navbar from './components/Layout/Header';
+import Main from './components/templates/Main/Main';
+import Asaide from './components/templates/Asidebar/Asaide';
+import Layout from './Layout';
+import Navbar from './Layout/Header';
 import { useContext } from 'react';
 
 //context
