@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from 'react';
-import products from '../../../__mock__/Products';
+import products from '../../__mock__/Products';
 import CardMain from './cardMain';
-import styles from '../../../assets/styles/Main.module.scss';
+import styles from '../../assets/styles/Main.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCards } from '../../../features/cards/cardsSlice';
+import { fetchCards } from '../../features/cards/cardsSlice';
 
 // context
-import { ThemeContext } from '../../../context/ThemeContextProvider';
+import { ThemeContext } from '../../context/ThemeContextProvider';
 
 const Main = () => {
 
@@ -14,7 +14,6 @@ const Main = () => {
 
     const dispatch = useDispatch();
     const cards = useSelector((state) => state.cards);
-    console.log(cards);
 
     useEffect(() => {
         dispatch(fetchCards());
@@ -24,8 +23,6 @@ const Main = () => {
         <div className={!dark ? `${styles.dark} ${styles.main}` : styles.main}>
             <h1> دیوار تهران:‌ انواع آگهی‌ها و خدمات در تهران </h1>
             <div className={styles.mainItem}>
-
-            
             <div className={styles.mainItem}>
                 {products.map(item => 
                 <CardMain 

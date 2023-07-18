@@ -69,7 +69,7 @@
 }
 
 .filterPlace {
-  input {
+  Input {
     padding: 20px;
     transition: border-color .15s ease,color .15s ease;
     font-family: "iranyekanwebregular";
@@ -94,7 +94,7 @@
 }
 
 .filterPrice {
-  input{
+  Input{
     font-family: "iranyekanwebregular";
     border: 1px solid rgb(4 4 4 / 18%);
     border-radius: 4px;
@@ -115,7 +115,7 @@
   }
   
 .switch {
-  input{
+  Input{
     opacity: 0;
     width: 0;
     height: 0;
@@ -145,15 +145,15 @@
     transition: .4s;
   }
   
-  input:checked + .slider {
+  Input:checked + .slider {
     background-color: #2196F3;
   }
   
-  input:focus + .slider {
+  Input:focus + .slider {
     box-shadow: 0 0 1px #2196F3;
   }
   
-  input:checked + .slider:before {
+  Input:checked + .slider:before {
     -webkit-transform: translateX(15px);
     -ms-transform: translateX(15px);
     transform: translateX(15px);

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Header = ({children, className}) => {
+const Card = ({children, className}) => {
     return (
         <div className={className}>
             {children}
@@ -8,4 +8,4 @@ const Header = ({children, className}) => {
     );
 };
 
-export default Header;
+export default Card;

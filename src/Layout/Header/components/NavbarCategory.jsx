@@ -13,7 +13,6 @@ const NavbarCategory = () => {
             {NavCategory.map(i => <CardCategory key={i.id} headCtg={i.title} item={i.items}/>)}
             <div className={styles.imgCategory}>
                 <img src={Home} alt='home'/>
-                {/* <button>  همه ی آگهی های دیوار  </button> */}
                 <Buttons>  همه ی آگهی های دیوار  </Buttons>
             </div>
         </div>
