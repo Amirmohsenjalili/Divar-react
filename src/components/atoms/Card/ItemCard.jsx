@@ -1,23 +1,18 @@
 import React from 'react';
-import styles from '../../assets/styles/Main.module.scss'
 
-//atoms 
-import Card from '../../components/atoms/Card/Card';
+import styles from './styles.module.scss';
 
-const CardMain = ({title, category, price, image}) => {
-
-
+const ItemCard = ({title, category, price, image}) => {
     return (
-        <Card className={styles.CardMain}>
+        <div className={styles.CardMain}>
             <div className={styles.CardMainItem}>
                 <h4>{title}</h4>
                 <span>{category}</span>
                 <span>{price}</span>
             </div>
             <img src={image} alt='pictuer'/>
-        </Card>
-       
+        </div>
     );
 };
 
-export default CardMain;
+export default ItemCard;

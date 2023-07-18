@@ -1,12 +1,14 @@
 import React, { useContext, useEffect } from 'react';
 import products from '../../__mock__/Products';
-import CardMain from './cardMain';
 import styles from '../../assets/styles/Main.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCards } from '../../features/cards/cardsSlice';
 
 // context
 import { ThemeContext } from '../../context/ThemeContextProvider';
+
+//atoms
+import ItemCard from '../../components/atoms/Card/ItemCard';
 
 const Main = () => {
 
@@ -25,7 +27,7 @@ const Main = () => {
             <div className={styles.mainItem}>
             <div className={styles.mainItem}>
                 {products.map(item => 
-                <CardMain 
+                <ItemCard 
                 key={item.id} 
                 title={item.title} 
                 category={item.category} 
@@ -34,7 +36,7 @@ const Main = () => {
                 )}
             </div>
             {cards.loading ? <h2>Loading ...</h2> : null}
-            <div className={styles.mainItem}>{cards.cards ? cards.cards.map(i => <CardMain 
+            <div className={styles.mainItem}>{cards.cards ? cards.cards.map(i => <ItemCard 
             key={i.id}
             title={i.title} 
             category={i.category} 
