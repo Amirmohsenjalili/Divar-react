@@ -5,7 +5,7 @@ import styles from "../../../assets/styles/Asaidebar.module.scss";
 import Accordon from './Accordon';
 import ButtonPlace from './ButtonPlace';
 import ButtonPrice from './ButtonPrice';
-import ButtonCondition from './AsaideButton';
+import ButtonCondition from './ButtonCondition';
 import useIsDesktop from '../../../hooks/useIsDesktop';
 //organisms
 import Asaides from '../../organisms/Asaide/Asaide';
@@ -55,7 +55,7 @@ const Aside = () => {
                     <Accordon title="محل" show={toggleShowPlace}/>
                     {showPlace && <ButtonPlace />}
                     <Accordon title="قیمت" show={toggleShowPrice}/>
-                    {showPrice && <ButtonPrice/>}
+                    {showPrice && <><ButtonPrice/></>}
                     <Accordon title="وضعیت آگهی" show={toggleShowCondition}/>
                     {showCondition && <ButtonCondition />}
                     {/* </div> */}
