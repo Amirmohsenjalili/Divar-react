@@ -1,12 +1,12 @@
 import React from 'react';
-import img from '../../assets/images/ChevronDown.svg';
-import styles from "../../assets/styles/Asaidebar.module.scss";
+import img from '../../../assets/images/ChevronDown.svg';
+import styles from "../../../assets/styles/Asaidebar.module.scss";
 
 //atoms
-import Buttons from '../../components/atoms/Button/Buttons';
+import Buttons from '../../../components/atoms/Button/Buttons';
 
 
-const Accordon = ({title,show}) => {
+const Accordion = ({title,show}) => {
       
       return (
           <div className={styles.asaideButton}>
@@ -18,4 +18,4 @@ const Accordon = ({title,show}) => {
     );
 };
 
-export default Accordon;
+export default Accordion;

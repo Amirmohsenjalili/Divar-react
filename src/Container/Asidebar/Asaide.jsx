@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react';
 import {AsaideCategory} from '../../__mock__/AsaideCategory';
-import AsaideName from './AsaideName';
+import AsaideName from './AsideItem/AsaideName';
 import styles from "../../assets/styles/Asaidebar.module.scss";
-import Accordon from './Accordon';
-import ButtonPlace from './ButtonPlace';
-import ButtonPrice from './ButtonPrice';
-import ButtonCondition from './ButtonCondition';
+import Accordion from './Accordion/Accordion';
+import ButtonPlace from './Accordion/ButtonAccordion/ButtonPlace';
+import ButtonPrice from './Accordion/ButtonAccordion/ButtonPrice';
+import ButtonCondition from './Accordion/ButtonAccordion/ButtonCondition';
 import useIsDesktop from '../../hooks/useIsDesktop';
 
 //context
@@ -45,11 +45,11 @@ const Aside = () => {
                 }>
                     {AsaideCategory.map(item => <AsaideName key={item.id} name={item.name} items={item.items}/>)}
                     <div className={styles.asaideButton2}>
-                    <Accordon title="محل" show={toggleShowPlace}/>
+                    <Accordion title="محل" show={toggleShowPlace}/>
                     {showPlace && <ButtonPlace />}
-                    <Accordon title="قیمت" show={toggleShowPrice}/>
+                    <Accordion title="قیمت" show={toggleShowPrice}/>
                     {showPrice && <><ButtonPrice/></>}
-                    <Accordon title="وضعیت آگهی" show={toggleShowCondition}/>
+                    <Accordion title="وضعیت آگهی" show={toggleShowCondition}/>
                     {showCondition && <ButtonCondition />}
                     </div>
                 </div>

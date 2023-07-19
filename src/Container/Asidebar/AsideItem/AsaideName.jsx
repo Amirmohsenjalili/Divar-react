@@ -1,9 +1,9 @@
 import React from 'react';
 import AsaideItem from './AsaideItem';
-import styles from '../../assets/styles/Asaidebar.module.scss'
+import styles from '../../../assets/styles/Asaidebar.module.scss'
 
 //atoms 
-import Buttons from '../../components/atoms/Button/Buttons';
+import Buttons from '../../../components/atoms/Button/Buttons';
 
 const AsaideName = ( { name,items } ) => {
     return (

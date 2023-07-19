@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from "../../assets/styles/Asaidebar.module.scss";
+import styles from "../../../../assets/styles/Asaidebar.module.scss";
 
 //atoms
-import Input from '../../components/atoms/Input/Input'
+import Input from '../../../../components/atoms/Input/Input'
 
 
 const ButtonPlace = () => {
