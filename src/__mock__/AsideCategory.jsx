@@ -1,4 +1,4 @@
-const AsaideCategory = [
+const AsideCategory = [
     {
     id: 0,
     name: "دسته ها", 
@@ -83,4 +83,4 @@ const AsaideCategory = [
     }
 ]
 
-export { AsaideCategory };
+export { AsideCategory };

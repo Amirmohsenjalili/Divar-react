@@ -1,6 +1,6 @@
 import styles from './App.module.scss'
 import Main from './Container/Main/Main';
-import Asaide from './Container/Asidebar/Asaide';
+import Aside from './Container/Asidebar/Aside';
 import Layout from './Layout';
 import Navbar from './Layout/Header';
 import { useContext } from 'react';
@@ -19,7 +19,7 @@ function App() {
         <CategotyContextProvider>
           <Layout>
             <Navbar />
-            <Asaide />
+            <Aside />
             <Main />
           </Layout>
         </CategotyContextProvider>

@@ -1,41 +1,45 @@
-.asaidebar {
+.asidebar {
     position: fixed;
     height: calc(100vh - 64px);
     padding: 32px 16px 0 16px;
     width: 280px;
     top: 80px;
     overflow: auto;
-    font-size: .75rem;
-    font-weight: 400;
-    line-height: 2;
     z-index: 0;
 }
 
-.asaideItem {
+.name {
+  margin-bottom: 30px;
+}
+
+.asideItem {
     align-items: center;
     gap: 5px;
     height: 35px;
 }
 
-.asaideButton {
+.asideButton {
     border-top: 1px solid rgba(0,0,0,.12);
     padding: 8px 0;
 }
 
-.asaideButtonItem {
+.asideButtonItem {
     align-items: center;
     box-sizing: content-box;
     font-size: .75rem;
     height: 40px;
+    border-top: 1px solid rgba(0,0,0,.12);
+
+    
 }
 
-.asaideButtonItem {
+.asideButtonItem {
   span{
     margin-right: 10px;
   }
 }
 
-.asaideButton2 {
+.asideButton2 {
     margin-top: 20px;
     margin-bottom: 100px;
 }
@@ -181,7 +185,7 @@
   font-size: .75rem;
   font-weight: 400;
   line-height: 2;
-  .asaideButtonItem {
+  .asideButtonItem {
     background-color: #696565;
     color: #ede3e3;
     span {
@@ -192,18 +196,10 @@
     background-color: #696565;
     color: #fff;
   }
-  .asaideItem {
+  .asideItem {
     background-color: #696565;
     color: #fff;
   }
-}
-
-.conteiner {
-  background-color: #fff;
-  border: none;
-  display: flex;
-  flex-direction: column;
-  font-family: 'iranyekanwebregular';
 }
 
 @media (max-width:1400px) {
@@ -217,7 +213,7 @@
 }
 
 @media (max-width: 1200px) {
-  .asaidebar {
+  .asidebar {
     padding: 0;
   }
   .showCategory{
@@ -229,7 +225,7 @@
 }
 
 @media (max-width: 992px) {
-  .asaidebar {
+  .asidebar {
     min-width: 0;
     width:250px;
     right: 0;
