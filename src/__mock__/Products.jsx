@@ -2,7 +2,7 @@
         {
             id: 0,
             title: "75متر،کلید نخورده،خ لارستان",
-            category: "آژانس املاک مدرن در بهجت آباد ",
+            category: "لحظاتی پیش در آریاشهر",
             price: "9،750،000،000 تومان",
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWvJKgq-aHiD3zbfSzou1LbCTffaJBDbNpWxHDEOVk&s"
         },
@@ -23,7 +23,7 @@
         {
             id: 3,
             title: "75متر،کلید نخورده،خ لارستان",
-            category: "آژانس املاک مدرن در بهجت آباد ",
+            category: "لحظاتی پیش در آریاشهر",
             price: "9،750،000،000 تومان",
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqlorssMxbYxvAlbfx7vsTdDFrUwXLUyFWrLEVS695&s"
         },
@@ -44,7 +44,7 @@
         {
             id: 6,
             title: "75متر،کلید نخورده،خ لارستان",
-            category: "آژانس املاک مدرن در بهجت آباد ",
+            category: "لحظاتی پیش در آریاشهر",
             price: "9،750،000،000 تومان",
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqlorssMxbYxvAlbfx7vsTdDFrUwXLUyFWrLEVS695&s"
         },

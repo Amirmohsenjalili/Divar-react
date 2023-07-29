@@ -1,20 +1,9 @@
 .button {
-    border: none;
     display: flex;
-    background-color: #fff;
-    font-family: 'iranyekanwebregular';
     transition: opacity .6s ease,background-color .6s ease,box-shadow .6s ease,border-color .6s ease,transform .6s ease;
-    white-space: nowrap;
-    border-radius: 4px;
-    cursor: pointer;
-    opacity: 0.6;
-
-
-
-    
 }
 
 .button:hover {
     opacity: 1;
-    transition: opacity .8s ease
+    transition: opacity .8s ease,background-color .6s ease;
 }

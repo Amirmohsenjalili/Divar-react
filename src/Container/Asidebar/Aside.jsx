@@ -1,14 +1,18 @@
 import React, { useState, useContext } from 'react';
+
+//_mock_
 import {AsideCategory} from '../../__mock__/AsideCategory';
+
+//imgs
 import img from '../../assets/images/ChevronDown.svg';
-import useIsDesktop from '../../hooks/useIsDesktop';
+
+//hooks
+// import useIsDesktop from '../../hooks/useIsDesktop';
 
 //styles
-// import styles from "../../assets/styles/Asidebar.module.scss";
 import styles from "./styles.module.scss"
 
 //context
-import { CategoryContext } from '../../context/CategotyContextProvider';
 import { ThemeContext } from '../../context/ThemeContextProvider';
 
 //atoms
@@ -22,9 +26,11 @@ const Aside = () => {
     const [showPlace, setShowPlace] = useState(false);
     const [showPrice, setShowPrice] = useState(false);
     const [showCondition, setShowCondition] = useState(false);
-    const isDesktop = useIsDesktop()
+    const [click, setClick] = useState(false);
+    const [click2, setClick2] = useState(false);
 
-    const {show} = useContext(CategoryContext)
+    // const isDesktop = useIsDesktop()
+
     const {dark} = useContext(ThemeContext)
 
     const toggleShowPlace = () => {
@@ -38,80 +44,84 @@ const Aside = () => {
     const toggleShowCondition = () => {
         setShowCondition(!showCondition);
     };
+
+    const toggle  = () => {
+        setClick(!click);
+    };
+
+    const toggle2  = () => {
+        setClick2(!click2);
+    };
     
     
     return (
-        <>{ isDesktop && 
-            <div className={!dark ? styles.dark : `${styles.asidebar} ${styles.browse}`}>
-                
-                <div className={
-                    !show ? styles.showCategory : `${styles.asidebar} ${styles.browse}` 
-                }>
+        // <>{ isDesktop && 
+            <div className={!dark ? `${styles.dark} ${styles.asidebar__container} '  fixed w-80 top-20 pt-8 px-4 md:absolute lg:absolute xl:fixed xl:w-72 ' ` : `' fixed w-80 top-20 pt-8 px-4 sm:hidden md:block md:absolute lg:absolute xl:fixed xl:w-72 ' ${styles.asidebar__container}`}>
+                <div className='hidden md:block'>
                     {AsideCategory.map(item => 
                     <div key={item.id}>
-                        <Buttons className={styles.name}>{item.name}</Buttons>
+                        <Buttons className={` ' pb-10 text-xs text-black opacity-100 ' ${styles.asidebar__menu__title}`}>{item.name}</Buttons>
                         {item.items.map(i => 
-                        <Buttons key={i.id} className={styles.asideItem}>{i.img}{i.title}</Buttons>
+                        <Buttons key={i.id} className={` ' text-xs pb-5 gap-2 h-9 items-center opacity-60 ' ${styles.asidebar__menu__item}`}>
+                            {i.img}{i.title}
+                        </Buttons>
                         )}
                     </div>
                     )}
-                    <div className={styles.asideButton}>
-                        <div className={styles.asideButtonItems}>
-                            <Buttons className={styles.asideButtonItem}  onClick={toggleShowPlace}>
-                                <img src={img} alt='dropdown' />
+                    <div className='mt-5 mb-24'>
+                        <div className='border-t-2 pt-2'>
+                            <Buttons className={` ' items-center box-content text-xs h-10 ' ${styles.aside__button__item}`}  onClick={toggleShowPlace}>
+                                <img src={img} alt='dropdown' className='pl-2' />
                                 <span>محل</span>
                             </Buttons>
                             {showPlace && 
-                                <div className={styles.filterPlace}>
-                                <Input  type="text" placeholder="تعیین محل" />
+                                <div className={styles.aside__button__filterPlace} >
+                                <Input className='rounded w-full h-6 text-xs	px-1.5 opacity-50 mb-2.5' type="text" placeholder="تعیین محل" />
                             </div>
                             }
                         </div>
-                        <div className={styles.asideButtonItems}>
-                            <Buttons className={styles.asideButtonItem}  onClick={toggleShowPrice}>
-                                <img src={img} alt='dropdown' />
+                        <div className='border-t-2 pt-2'>
+                            <Buttons className={` ' items-center box-content text-xs h-10 ' ${styles.aside__button__item}`}  onClick={toggleShowPrice}>
+                                <img src={img} alt='dropdown' className='pl-2' />
                                 <span>قیمت</span>
                             </Buttons>
                             {showPrice && 
-                                <div className={styles.filterPrice}>
+                                <div className={`' h-24	flex items-center gap-2.5 ' ${styles.aside__button__filterPrice}`}>
                                     <div>
                                         <span>حداقل</span>
-                                        <div className={styles.point}>:</div>
+                                        <div>:</div>
                                         <span>حداکثر</span>
                                     </div>
                                     <div>
-                                        <Input type="text"
+                                        <Input className=' rounded w-full	h-6 text-xs	p-1 opacity-50 mb-2.5 mt-2.5 ' type="text"
                                             placeholder="مثلا 7،000،000،000           تومان"/>
                                         
-                                        <Input type="text"
+                                        <Input className=' rounded w-full	h-6 text-xs	p-1 opacity-50 mb-2.5 mt-2.5 ' type="text"
                                             placeholder="مثلا 7،000،000،000           تومان"/>
-                                        
                                     </div>
                                 </div>
                             }
                         </div>
-                        <div className={styles.asideButtonItems}>
-                            <Buttons className={styles.asideButtonItem} onClick={toggleShowCondition}>
-                                <img src={img} alt='dropdown' />
+                        <div className='border-t-2 pt-2'>
+                            <Buttons className={` ' items-center box-content text-xs h-10 ' ${styles.aside__button__item}`} onClick={toggleShowCondition}>
+                                <img src={img} alt='dropdown' className='pl-2' />
                                 <span>وضعیت آگهی</span>
                             </Buttons>
                             {showCondition && 
-                                <div className={styles.switchFilter}>
-                                    <div className={styles.toggleSwitchFilter}>
+                                <div className={styles.aside__switchFilter}>
+                                    <div className={` ' flex items-center justify-between text-xs opacity-100 p-2.5 ' ${styles.aside__toggleSwitchFilter}`}>
                                         <span>فقط عکس دار</span>
                                         <div>
-                                            <div className={styles.switch}>
-                                                <Input type="checkbox" />
-                                                <span className={`${styles.slider} ${styles.round}`}></span>
+                                            <div className=' relative inline-block w-8 h-4 '>
+                                                <span className={!click ? `' absolute top-0 left-0 right-0 bottom-0 cursor-pointer ' ${styles.aside__slider} ${styles.aside__round}` : ` ' absolute top-0 left-0 right-0 bottom-0 cursor-pointer ' ${styles.aside__sliderb} ${styles.aside__round}` } onClick={toggle}></span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className={styles.toggleSwitchFilter}>
+                                    <div className={` ' flex items-center justify-between text-xs opacity-100 p-2.5 ' ${styles.aside__toggleSwitchFilter}`}>
                                         <span>فقط فوری</span>
                                         <div>
-                                            <div className={styles.switch}>
-                                                <Input type="checkbox" />
-                                                <span className={`${styles.slider} ${styles.round}`}></span>
+                                            <div className=' relative inline-block w-8 h-4 '>
+                                                <span className={!click2 ? `' absolute top-0 left-0 right-0 bottom-0 cursor-pointer ' ${styles.aside__slider} ${styles.aside__round}` : ` ' absolute top-0 left-0 right-0 bottom-0 cursor-pointer ' ${styles.aside__sliderb} ${styles.aside__round}` } onClick={toggle2}></span>
                                             </div>
                                         </div>
                                     </div>
@@ -121,8 +131,8 @@ const Aside = () => {
                     </div>
                 </div>
             </div>
-        }
-        </>
+        // }
+        // </>
     );
 };
 

@@ -3,10 +3,10 @@ import styles from '../styles.module.scss';
 
 const ItemCategory = ({items}) => {
     return (
-        <div className={styles.categoryItems}>
-            <a href='#'>{items.a}</a>
-            <a href='#'>{items.b}</a>
-            <a href='#'>{items.c}</a>
+        <div className='flex flex-col flex-wrap m-0'>
+            <a href='#' className='font-normal text-xs leading-loose text-gray-400 hover:text-black'>{items.a}</a>
+            <a href='#' className='font-normal text-xs leading-loose text-gray-400 hover:text-black'>{items.b}</a>
+            <a href='#' className='font-normal text-xs leading-loose text-gray-400 hover:text-black'>{items.c}</a>
         </div>
     );
 };
