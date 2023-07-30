@@ -1,14 +1,14 @@
-import React, {useContext} from "react";
-import styles from './dark.module.scss'
+import { useSelector } from 'react-redux';
 
-import { ThemeContext } from "../context/ThemeContextProvider";
+// redux
+import styles from './dark.module.scss'
 
 const Layout = ({children}) => {
 
-    const {dark} = useContext(ThemeContext)
+const dark = useSelector((state) => state.theme.dark)
 
    return (
-        <div className={!dark && styles.dark}>{children}</div>
+        <div className={dark && styles.dark}>{children}</div>
    )
 }
 

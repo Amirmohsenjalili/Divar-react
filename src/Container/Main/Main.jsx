@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 //_mock_
 import products from '../../__mock__/Products';
@@ -10,25 +10,21 @@ import styles from './Main.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCards } from '../../features/cards/cardsSlice';
 
-// context
-import { ThemeContext } from '../../context/ThemeContextProvider';
-
 //atoms
 import ItemCard from '../../components/atoms/Card/ItemCard';
 
 const Main = () => {
 
-    const {dark} = useContext(ThemeContext);
-
     const dispatch = useDispatch();
     const cards = useSelector((state) => state.cards);
+    const dark = useSelector((state) => state.theme.dark)
 
     useEffect(() => {
         dispatch(fetchCards());
     },[]);
 
     return (
-        <div className={!dark ? `
+        <div className={dark ? `
         ${styles.dark} ' m-auto flex flex-col gap-2 items-center relative top-5 z-0 md:mr-64 lg:mr-96  lg:items-end '` : 'm-auto flex flex-col gap-2 items-center relative top-5 z-0 md:mr-64 lg:mr-96  lg:items-end'}>
             <h1 className=' pb-2 text-slate-500 text-xs leading-6 lg:text-left'> دیوار تهران:‌ انواع آگهی‌ها و خدمات در تهران </h1>
             <div>

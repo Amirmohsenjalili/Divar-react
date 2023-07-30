@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 
 //_mock_
 import {AsideCategory} from '../../__mock__/AsideCategory';
@@ -6,18 +6,15 @@ import {AsideCategory} from '../../__mock__/AsideCategory';
 //imgs
 import img from '../../assets/images/ChevronDown.svg';
 
-//hooks
-// import useIsDesktop from '../../hooks/useIsDesktop';
-
 //styles
 import styles from "./styles.module.scss"
-
-//context
-import { ThemeContext } from '../../context/ThemeContextProvider';
 
 //atoms
 import Buttons from '../../components/atoms/Button/Buttons';
 import Input from '../../components/atoms/Input/Input';
+
+//redux
+import { useSelector } from 'react-redux';
 
 
 
@@ -28,10 +25,8 @@ const Aside = () => {
     const [showCondition, setShowCondition] = useState(false);
     const [click, setClick] = useState(false);
     const [click2, setClick2] = useState(false);
+    const dark = useSelector((state) => state.theme.dark)
 
-    // const isDesktop = useIsDesktop()
-
-    const {dark} = useContext(ThemeContext)
 
     const toggleShowPlace = () => {
         setShowPlace(!showPlace);
@@ -55,8 +50,7 @@ const Aside = () => {
     
     
     return (
-        // <>{ isDesktop && 
-            <div className={!dark ? `${styles.dark} ${styles.asidebar__container} '  fixed w-80 top-20 pt-8 px-4 md:absolute lg:absolute xl:fixed xl:w-72 ' ` : `' fixed w-80 top-20 pt-8 px-4 sm:hidden md:block md:absolute lg:absolute xl:fixed xl:w-72 ' ${styles.asidebar__container}`}>
+            <div className={dark ? `${styles.dark} ${styles.asidebar__container} '  fixed w-80 top-20 pt-8 px-4 md:absolute lg:absolute xl:fixed xl:w-72 ' ` : `' fixed w-80 top-20 pt-8 px-4 sm:hidden md:block md:absolute lg:absolute xl:fixed xl:w-72 ' ${styles.asidebar__container}`}>
                 <div className='hidden md:block'>
                     {AsideCategory.map(item => 
                     <div key={item.id}>
@@ -131,8 +125,6 @@ const Aside = () => {
                     </div>
                 </div>
             </div>
-        // }
-        // </>
     );
 };
 
