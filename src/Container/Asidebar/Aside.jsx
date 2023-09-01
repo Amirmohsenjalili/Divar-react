@@ -51,7 +51,7 @@ const Aside = () => {
     
     return (
             <div className={dark ? `${styles.dark} ${styles.asidebar__container} '  fixed w-80 top-20 pt-8 px-4 md:absolute lg:absolute xl:fixed xl:w-72 ' ` : `' fixed w-80 top-20 pt-8 px-4 sm:hidden md:block md:absolute lg:absolute xl:fixed xl:w-72 ' ${styles.asidebar__container}`}>
-                <div className='hidden md:block'>
+                <div className='hidden md:block md:fixed'>
                     {AsideCategory.map(item => 
                     <div key={item.id}>
                         <Buttons className={` ' pb-10 text-xs text-black opacity-100 ' ${styles.asidebar__menu__title}`}>{item.name}</Buttons>

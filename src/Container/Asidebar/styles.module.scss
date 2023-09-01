@@ -1,6 +1,8 @@
 .asidebar__container {
   height: calc(100vh - 64px);
-  overflow: auto
+  overflow: auto;
+  position: fixed;
+  
 }
 
 .aside__button__filterPlace {

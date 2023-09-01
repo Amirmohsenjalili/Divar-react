@@ -4,8 +4,8 @@ import styles from './App.module.scss'
 //components
 import Main from './Container/Main/Main';
 import Aside from './Container/Asidebar/Aside';
-import Layout from './Layout';
-import Navbar from './Layout/Header';
+import Layout from './Layout/indext';
+import Navbar from './Layout/Header/indext';
 
 //redux
 import { useSelector } from 'react-redux';

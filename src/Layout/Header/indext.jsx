@@ -29,6 +29,10 @@ const dark = useSelector((state) => state.theme.dark)
 const show = useSelector((state) => state.category.showButton)
 const dispatch = useDispatch()
 
+const inputClick = () => {
+  document.getElementById('Search').focus(); return false;
+}
+
   return ( 
     <div className={ dark ? `${styles.dark} ${styles.navbar} ' sticky bg-white z-10 top-0 '` : `${styles.navbar} ' sticky bg-white z-10 top-0 '`}>
       <nav className='justify-center flex items-center h-14 text-xs w-full md:justify-between'>
@@ -51,7 +55,7 @@ const dispatch = useDispatch()
         <div className={`${styles.navbar__section} ' flex items-center gap-52	'`}>
           <label 
             className={`' items-center flex gap-2 h-10 px-2 rounded ' ${styles.navbar__label}`}
-            onclick="document.getElementById('Search').focus(); return false;">
+            onClick={inputClick}>
             <img src={search} alt="search" className='w-4 mx-2 text-gray-400' />
             <Input 
               className=' w-full outline-none '
