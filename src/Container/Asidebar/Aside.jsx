@@ -62,7 +62,7 @@ const Aside = () => {
                         )}
                     </div>
                     )}
-                    <div className='mt-5 mb-24'>
+                    <div className='mt-5 mb-24 w-52	'>
                         <div className='border-t-2 pt-2'>
                             <Buttons className={` ' items-center box-content text-xs h-10 ' ${styles.aside__button__item}`}  onClick={toggleShowPlace}>
                                 <img src={img} alt='dropdown' className='pl-2' />
@@ -87,11 +87,11 @@ const Aside = () => {
                                         <span>حداکثر</span>
                                     </div>
                                     <div>
-                                        <Input className=' rounded w-full	h-6 text-xs	p-1 opacity-50 mb-2.5 mt-2.5 ' type="text"
-                                            placeholder="مثلا 7،000،000،000           تومان"/>
+                                        <Input className=' rounded w-full h-6 text-xs p-1 opacity-50 mb-2.5 mt-2.5 ' type="text"
+                                            placeholder="مثلا 7،000،000،000       تومان"/>
                                         
-                                        <Input className=' rounded w-full	h-6 text-xs	p-1 opacity-50 mb-2.5 mt-2.5 ' type="text"
-                                            placeholder="مثلا 7،000،000،000           تومان"/>
+                                        <Input className=' rounded w-full h-6 text-xs p-1 opacity-50 mb-2.5 mt-2.5 ' type="text"
+                                            placeholder="مثلا 7،000،000،000       تومان"/>
                                     </div>
                                 </div>
                             }
