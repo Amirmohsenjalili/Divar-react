@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { FixedSizeList as List } from "react-window";
-import AutoSizer from "react-virtualized-auto-sizer";
+import { FixedSizeGrid as Grid } from 'react-window';
 
 //styles
 import styles from "./Main.module.scss";
@@ -17,20 +16,18 @@ const Main = () => {
   const [products, setProducts] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(1);
-  const [lastPostDate, setLastPostData] = useState(1693322601442276);
+  const [lastPostDate, setLastPostData] = useState(1693822906340622);
   const dark = useSelector((state) => state.theme.dark);
 
-  const Row = ({ index, style, data }) => {
-    const card = data[index];
+  const Cell = ({ columnIndex, rowIndex, style }) => {
+    const cardIndex = rowIndex * 3 + columnIndex;
+    const card = products[cardIndex];
+    if (!card) {
+      return null;
+    }
     return (
-      <div style={{ 
-        ...style, 
-        display: "gride",
-        width: "fit-content",
-        position: "initial",
-        display:"flex",
-
-      }} key={index}>
+      <div style={{...style, direction:'rtl'}
+      }>
         <ItemCard
           title={card.data.title}
           category={card.data.top_description_text}
@@ -41,6 +38,7 @@ const Main = () => {
       </div>
     );
   };
+  
   const { ref, inView } = useInView({
     threshold: 0,
   });
@@ -85,26 +83,17 @@ const Main = () => {
       <div>
         <div
           className={` ' flex flex-col flex-wrap items-center gap-2.5 mb-2.5 lg:flex-row lg:justify-end ' ${styles.main__item} `}
-        >
-          <AutoSizer style={{
-            width:"100vw",
-            height: "1000px",
-            display:"flex"
-            }}>
-            {({ width, height, display }) => (
-              <List
-                width={width}
-                height={height}
-                display={display}
-                itemCount={products.length}
-                itemSize={200}
-                itemData={products}
-                style={{direction:"rtl", width:"100%", display:"flex"}}
-              >
-                {Row}
-              </List>
-            )}
-          </AutoSizer>
+          >
+               <Grid
+               columnCount={3}
+               columnWidth={400}
+               height={800}
+               rowCount={products.length}
+               rowHeight={200}
+               width={1500}
+               >
+               {Cell}
+             </Grid>
           {hasMore && (
             <div className="m-auto" ref={ref}>
               loading data...
@@ -118,3 +107,37 @@ const Main = () => {
 
 export default Main;
 
+
+// import { FixedSizeList as List } from "react-window";
+// import AutoSizer from "react-virtualized-auto-sizer";
+
+
+  // const Row = ({ index, style, data }) => {
+  //   const card = data[index];
+  //   return (
+    //     <div style={{ 
+  //       ...style, 
+  //       display: "gride",
+  //       width: "fit-content",
+  //       position: "initial",
+
+  //     }} key={index}>
+  //       <ItemCard
+  //         title={card.data.title}
+  //         category={card.data.top_description_text}
+  //         footer={card.data.bottom_description_text}
+  //         price={card.data.middle_description_text}
+  //         image={card?.data?.image_url?.[0]?.src}
+  //       />
+  //     </div>
+  //   );
+  // };
+
+{/* <AutoSizer style={{
+            width:"1500px",
+            height: "1000px",
+            display:"flex"
+            }}>
+            {({ width, height, display }) => (
+  )}
+          </AutoSizer> */}
