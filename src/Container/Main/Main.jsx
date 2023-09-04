@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { FixedSizeList as List } from "react-window";
-import AutoSizer from "react-virtualized-auto-sizer";
 
 //styles
 import styles from "./Main.module.scss";
@@ -27,8 +26,6 @@ const Main = () => {
         ...style, 
         display: "gride",
         width: "fit-content",
-        position: "initial",
-        display:"flex",
 
       }} key={index}>
         <ItemCard
@@ -84,27 +81,18 @@ const Main = () => {
       </h1>
       <div>
         <div
-          className={` ' flex flex-col flex-wrap items-center gap-2.5 mb-2.5 lg:flex-row lg:justify-end ' ${styles.main__item} `}
+          className={`' flex flex-col flex-wrap items-center gap-2.5 mb-2.5 lg:flex-col lg:justify-end ' ${styles.main__item} `}
         >
-          <AutoSizer style={{
-            width:"100vw",
-            height: "1000px",
-            display:"flex"
-            }}>
-            {({ width, height, display }) => (
               <List
-                width={width}
-                height={height}
-                display={display}
+                width={400}
+                height={800}
                 itemCount={products.length}
                 itemSize={200}
                 itemData={products}
-                style={{direction:"rtl", width:"100%", display:"flex"}}
+                style={{direction:"rtl"}}
               >
                 {Row}
               </List>
-            )}
-          </AutoSizer>
           {hasMore && (
             <div className="m-auto" ref={ref}>
               loading data...
@@ -118,66 +106,3 @@ const Main = () => {
 
 export default Main;
 
-// import { VariableSizeList as List } from "react-window";
-// import AutoSizer from "react-virtualized-auto-sizer";
-// import {List, AutoSizer} from "react-virtualized";
-// import 'react-virtualized/styles.css';
-//
-
-// const getItemSize = (index) => {return 35 + index * 100;}
-
-{
-  /* {({ index, style }) => (
-              <ItemCard
-                key={index}
-                title={products[index].data.title}
-                category={products[index].data.top_description_text}
-                footer={products[index].data.bottom_description_text}
-                price={products[index].data.middle_description_text}
-                image={products[index]?.data?.image_url?.[0]?.src}
-                style={style} // Pass the style prop to the item component
-              />
-            )}
-                </List>
-            )}
-
-</AutoSizer> */
-}
-
-{
-  /* {products
-              ? products.map((i, index) => (
-                  <ItemCard
-                    key={index}
-                    title={i.data.title}
-                    category={i.data.top_description_text}
-                    footer={i.data.bottom_description_text}
-                    price={i.data.middle_description_text}
-                    image={i?.data?.image_url?.[0]?.src}
-                  />
-                ))
-              : null} */
-}
-
-{
-  /* <AutoSizer>{({ width, height }) => (
-
-          
-          <List
-  width={300}
-  height={1000}
-  rowHeight={50}
-  rowCount={products.length}
-  rowRenderer={({ index, key, style }) => (
-    <div key={key} style={style}>
-      <ItemCard
-        title={products[index].data.title}
-        category={products[index].data.top_description_text}
-        footer={products[index].data.bottom_description_text}
-        price={products[index].data.middle_description_text}
-        image={products[index]?.data?.image_url?.[0]?.src}
-      />
-    </div>
-  )}
-/>)}</AutoSizer> */
-}
