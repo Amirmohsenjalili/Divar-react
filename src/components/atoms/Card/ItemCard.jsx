@@ -10,7 +10,7 @@ const ItemCard = ({ title, category, price, image, footer }) => {
   
   return (
     <div
-      className={`${styles.container} ' rounded min-w-max flex p-4 justify-between gap-2 flex-auto '`}
+      className={`${styles.container} ' m-1 rounded min-w-max flex p-4 justify-between gap-2 flex-auto '`}
     >
       <div className={" flex flex-col gap-2 mt-2 "}>
         <h4 className=" truncate pb-4 w-36 font-medium text-base ">{title}</h4>
