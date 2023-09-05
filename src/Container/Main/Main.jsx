@@ -1,27 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { Grid } from 'react-virtualized';
 
 //styles
 import styles from "./Main.module.scss";
-
 //redux
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 //atoms
 import ItemCard from "../../components/atoms/Card/ItemCard";
-
-import UserService from "./UserService";
+import { fetchData } from "../../store/cards/cardsSlice";
 
 const Main = () => {
-  const [products, setProducts] = useState([]);
-  const [hasMore, setHasMore] = useState(true);
-  const [page, setPage] = useState(1);
-  const [lastPostDate, setLastPostData] = useState(1693822906340622);
+
   const dark = useSelector((state) => state.theme.dark);
+  const cards = useSelector((state) => state.cards.cards);
+  const loading = useSelector((state) => state.cards.loading);
+  const hasMore = useSelector((state) => state.cards.hasMore);
+  const dispatch = useDispatch();
+  const { ref, inView } = useInView({
+    threshold: 0,
+  });
 
   const cellRenderer = ({ columnIndex, rowIndex, style }) => {
     const cardIndex = rowIndex * 3 + columnIndex;
-    const card = products[cardIndex];
+    const card = cards[cardIndex];
     if (!card) {
       return null;
     }
@@ -39,33 +41,11 @@ const Main = () => {
     );
   };
   
-  const { ref, inView } = useInView({
-    threshold: 0,
-  });
-
   useEffect(() => {
     if (inView) {
-      loadData(page, lastPostDate);
+      dispatch(fetchData());
     }
   }, [inView]);
-
-  const loadData = (page, lastPostDate) => {
-    UserService.lastPostList(page, lastPostDate)
-      .then((res) => {
-        const newPage = page + 1;
-        const newList = products.concat(res.product);
-        const newLastPostData = res.lastPostDate;
-        setLastPostData(newLastPostData);
-        setProducts(newList);
-        setPage(newPage);
-        if (res.data.length === 0) {
-          setHasMore(false);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   return (
     <div
@@ -88,20 +68,20 @@ const Main = () => {
                columnCount={3}
                columnWidth={400}
                height={800}
-               rowCount={products.length}
+               rowCount={cards.length}
                rowHeight={200}
                width={1500}
                overscanRowCount={10}
                overscanColumnCount={1}
                cellRenderer={cellRenderer}
                />
-               
-          {hasMore && (
-            <div className="m-auto" ref={ref}>
-              loading data...
-            </div>
-          )}
         </div>
+        {loading && <div className="m-auto">...Loading data</div>}
+        {hasMore && (
+          <div className="m-auto" ref={ref}>
+            ...loading more data
+          </div>
+        )}
       </div>
     </div>
   );
