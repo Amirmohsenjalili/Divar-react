@@ -1,14 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-// import cardsReducer from '../features/cards/cardsSlice';
-import categoryReducer from '../features/category/categorySlice';
-import themeReducer from '../features/theme/themeSlice';
+import cardsReducer from './cards/cardsSlice';
+import categoryReducer from './category/categorySlice';
+import themeReducer from './theme/themeSlice';
 
 // import logger from 'logger';
 
 const store = configureStore({
     reducer: {
-        //  cards: cardsReducer,
+         cards: cardsReducer,
          category: categoryReducer, 
          theme: themeReducer,
     },

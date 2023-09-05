@@ -6,18 +6,20 @@ import { FixedSizeList as List } from "react-window";
 import styles from "./Main.module.scss";
 
 //redux
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchData } from "../../store/cards/cardsSlice";
+
 //atoms
 import ItemCard from "../../components/atoms/Card/ItemCard";
 
-import UserService from "./UserService";
 
 const Main = () => {
-  const [products, setProducts] = useState([]);
-  const [hasMore, setHasMore] = useState(true);
-  const [page, setPage] = useState(1);
-  const [lastPostDate, setLastPostData] = useState(1693322601442276);
+
   const dark = useSelector((state) => state.theme.dark);
+  const cards = useSelector((state) => state.cards.cards);
+  const loading = useSelector((state) => state.cards.loading);
+  const hasMore = useSelector((state) => state.cards.hasMore);
+  const dispatch = useDispatch();
 
   const Row = ({ index, style, data }) => {
     const card = data[index];
@@ -44,27 +46,11 @@ const Main = () => {
 
   useEffect(() => {
     if (inView) {
-      loadData(page, lastPostDate);
+      dispatch(fetchData());
     }
   }, [inView]);
 
-  const loadData = (page, lastPostDate) => {
-    UserService.lastPostList(page, lastPostDate)
-      .then((res) => {
-        const newPage = page + 1;
-        const newList = products.concat(res.product);
-        const newLastPostData = res.lastPostDate;
-        setLastPostData(newLastPostData);
-        setProducts(newList);
-        setPage(newPage);
-        if (res.data.length === 0) {
-          setHasMore(false);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+
 
   return (
     <div
@@ -86,19 +72,20 @@ const Main = () => {
               <List
                 width={400}
                 height={800}
-                itemCount={products.length}
+                itemCount={cards.length}
                 itemSize={200}
-                itemData={products}
+                itemData={cards}
                 style={{direction:"rtl"}}
               >
                 {Row}
               </List>
-          {hasMore && (
-            <div className="m-auto" ref={ref}>
-              loading data...
-            </div>
-          )}
         </div>
+        {loading && <div className="m-auto">...Loading data</div>}
+        {hasMore && (
+          <div className="m-auto" ref={ref}>
+            ...loading more data
+          </div>
+        )}
       </div>
     </div>
   );

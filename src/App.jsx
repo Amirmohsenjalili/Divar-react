@@ -3,7 +3,7 @@ import styles from './App.module.scss'
 
 //components
 import Main from './Container/Main/Main';
-import Aside from './Container/Asidebar/Aside';
+import Side from './Container/Sidebar/Side';
 import Layout from './Layout/indext';
 import Navbar from './Layout/Header/indext';
 
@@ -18,7 +18,7 @@ function App() {
       <div className={dark ? styles.dark : styles.app}>
           <Layout>
             <Navbar />
-            <Aside />
+            <Side />
             <Main />
           </Layout>
       </div>
