@@ -20,8 +20,8 @@ import Input from "../../components/atoms/Input/Input";
 
 //redux
 import { useDispatch, useSelector } from "react-redux";
-import { toggle } from '../../features/category/categorySlice';
-import { themetoggle } from "../../features/theme/themeSlice";
+import { toggle } from '../../store/category/categorySlice';
+import { themetoggle } from "../../store/theme/themeSlice";
 
 const Navbar = () => {
 

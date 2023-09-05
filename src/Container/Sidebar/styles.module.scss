@@ -1,18 +1,18 @@
-.asidebar__container {
+.Sidebar__container {
   height: calc(100vh - 64px);
   overflow: auto;
   position: fixed;
   
 }
 
-.aside__button__filterPlace {
+.Side__button__filterPlace {
   Input {
     font-family: "iranyekanwebregular";
     border: 1px solid rgb(4 4 4 / 18%);
   }
 }
 
-.aside__button__filterPrice {
+.Side__button__filterPrice {
   
     div span {
       font-size: 10px;
@@ -23,10 +23,10 @@
     }
 }
 
-.aside__slider {
+.Side__slider {
   background-color: #ccc;
 }
-.aside__slider:before {
+.Side__slider:before {
   position: absolute;
   height: 10px;
   width: 10px;
@@ -36,13 +36,13 @@
   content: "";
   border-radius: 50%;
 }
-.aside__slider.aside__round {
+.Side__slider.Side__round {
   border-radius: 34px;
 }
-.aside__sliderb {
+.Side__sliderb {
   background-color: #2196F3;
 }
-.aside__sliderb:before {
+.Side__sliderb:before {
   position: absolute;
   height: 10px;
   width: 10px;
@@ -54,10 +54,10 @@
   content: "";
   border-radius: 50%;
 }
-.aside__sliderb.aside__round {
+.Side__sliderb.Side__round {
   border-radius: 34px;
 }
-.aside__toggleSwitchFilter {
+.Side__toggleSwitchFilter {
   color: rgba(0,0,0,.87);
 }
 
@@ -71,18 +71,18 @@
   height: calc(100vh - 64px);
   padding: 32px 16px 0 16px;
   width: 280px;
-  .asidebar__menu__title {
+  .Sidebar__menu__title {
     background-color: #696565;
     color: #ede3e3;
   }
-  .aside__button__item {
+  .Side__button__item {
     background-color: #696565;
     color: #ede3e3;
     span {
       color: #ede3e3;
     }
   }
-  .asidebar__menu__item {
+  .Sidebar__menu__item {
     background-color: #696565;
     color: #fff;
   }
