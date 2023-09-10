@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import cardsReducer from './cards/cardsSlice';
+import { cardsApi } from '../services/rtkQuery'
+
 import categoryReducer from './category/categorySlice';
 import themeReducer from './theme/themeSlice';
 
@@ -8,11 +9,12 @@ import themeReducer from './theme/themeSlice';
 
 const store = configureStore({
     reducer: {
-         cards: cardsReducer,
+         [cardsApi.reducerPath]: cardsApi.reducer,
          category: categoryReducer, 
          theme: themeReducer,
     },
-    // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+    middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(cardsApi.middleware),
 })
 
 export default store;

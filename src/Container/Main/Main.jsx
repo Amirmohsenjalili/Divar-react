@@ -1,30 +1,33 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 //styles
 import styles from "./Main.module.scss";
 
 //redux
-import { useSelector, useDispatch } from "react-redux";
-import { fetchData } from "../../store/cards/cardsSlice";
+import { useSelector } from "react-redux";
+import { useGetAllCardsQuery } from "../../services/rtkQuery";
 //atoms
 import ItemCard from "../../components/atoms/Card/ItemCard";
 
 const Main = () => {
   const dark = useSelector((state) => state.theme.dark);
-  const cards = useSelector((state) => state.cards.cards);
-  const loading = useSelector((state) => state.cards.loading);
-  const hasMore = useSelector((state) => state.cards.hasMore);
-  const dispatch = useDispatch();
+  const [ page, setPage ] = useState(1)
+  const [ lastPostDate, setLastPostDate ] = useState(1693322601442276)
+  const { data, isLoading, error, refetch } = useGetAllCardsQuery({ page, lastPostDate });
+  const [cards, setCards] = useState(data?.web_widgets?.post_list || [] );
+  const hasMore = data?.web_widgets?.post_list?.length > 0;
   const { ref, inView } = useInView({
     threshold: 0,
   });
 
   useEffect(() => {
     if (inView) {
-      dispatch(fetchData());
+      setPage(page + 1);
+      setLastPostDate(data?.last_post_date)
+      setCards([...cards, ...data?.web_widgets?.post_list || []])
     }
-  }, [inView, dispatch]);
+  }, [inView]);
 
   return (
     <div
@@ -54,12 +57,13 @@ const Main = () => {
             />
           ))}
         </div>
-        {loading && <div className="m-auto">...Loading data</div>}
+        {isLoading && <div className="m-auto">...Loading data</div>}
         {hasMore && (
           <div className="m-auto" ref={ref}>
             ...loading more data
           </div>
         )}
+        {error && <div className="m-auto">{error.message}</div>}
       </div>
     </div>
   );
