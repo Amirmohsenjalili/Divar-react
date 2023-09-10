@@ -24,7 +24,7 @@ const Main = () => {
     if (inView) {
       dispatch(fetchData());
     }
-  }, [inView]);
+  }, [inView, dispatch]);
 
   return (
     <div

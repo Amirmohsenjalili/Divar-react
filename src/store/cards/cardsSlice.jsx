@@ -31,9 +31,6 @@ const fetchData = createAsyncThunk("cards/fetchData", async(_, thunkAPI) => {
       hasMore: newHasMore,
     };
   })
-
-
-
 const cardsSlice = createSlice({
   name: "cards",
   initialState,
