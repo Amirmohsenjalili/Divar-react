@@ -1,15 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom"
 
 //style
 import styles from "./styles.module.scss";
-// img
+//img
 import notPhoto from "../../../assets/images/notPhoto.png";
 
-const ItemCard = ({ title, category, price, image, footer }) => {
-  
+const ItemCard = ({ title, category, price, image, footer, token }) => {
   
   return (
-    <div
+    <Link to={`/CardDetails/${title}`}
       className={`${styles.container} ' rounded min-w-max flex p-4 justify-between gap-2 flex-auto '`}
     >
       <div className={" flex flex-col gap-2 mt-2 "}>
@@ -27,7 +27,7 @@ const ItemCard = ({ title, category, price, image, footer }) => {
         alt="pictuer"
         className=" h-36 w-36 rounded "
       />
-    </div>
+    </Link>
   );
 };
 

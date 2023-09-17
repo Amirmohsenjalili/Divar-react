@@ -22,6 +22,7 @@ import Input from "../../components/atoms/Input/Input";
 import { useDispatch, useSelector } from "react-redux";
 import { toggle } from '../../store/category/categorySlice';
 import { themetoggle } from "../../store/theme/themeSlice";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 
@@ -37,9 +38,9 @@ const inputClick = () => {
     <div className={ dark ? `${styles.dark} ${styles.navbar} ' sticky bg-white z-10 top-0 '` : `${styles.navbar} ' sticky bg-white z-10 top-0 '`}>
       <nav className='justify-center flex items-center h-14 text-xs w-full md:justify-between'>
           <div className={`${styles.navbar__section} ' hidden items-center h-14 text-xs gap-1.5 md:flex '`}>
-            <Buttons  className={`${styles.navbar__button} ' h-12	w-12 mx-2 opacity-100 '`}>
+            <Link to={'/'} className={`${styles.navbar__button} ' h-12	w-12 mx-2 opacity-100 '`}>
               <img src={logo} alt="logo" className={`${styles.navbar__logo} ' h-12	w-12 mx-2 opacity-100 '`}/>
-            </Buttons>
+            </Link>
             <hr className={`${styles.navbar__divider} ' inline-block h-6 w-px box-border mr-2.5 '`} />
             <Buttons  className={`${styles.navbar__button} ' text-xs h-10 items-center p-4 opacity-60 hover:rounded hover:bg-gray-100 hover:font-semibold text-sm font-semibold mr-0 text-zinc-700 ' ${styles.navbar__button_location}`}>
               <img src={loc} alt="loc" className=' w-4 mx-2 text-gray-400 ' />
@@ -80,7 +81,7 @@ const inputClick = () => {
               onClick={() => dispatch(themetoggle())}>
                 <img src={ThemeIcon} alt="ThemeIcon" className=" w-8 "/>
               </Buttons>
-              <Buttons className={`' font-bold h-10 items-center mx-3.5 opacity-100 text-white px-4 m-4 rounded hover:bg-red-900 ' ${styles.navbar__submitButton}`}>
+              <Buttons className={`' font-bold h-10 items-center mx-3.5 opacity-100 text-white px-4 m-4 rounded hover:bg-red-600 ' ${styles.navbar__submitButton}`}>
                 ثبت آگهی
               </Buttons>
             </div>
