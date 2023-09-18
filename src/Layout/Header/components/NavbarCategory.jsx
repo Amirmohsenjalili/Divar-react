@@ -3,7 +3,7 @@ import NavCategory from '../../../__mock__/NavCategory';
 import CardCategory from './CardCategory';
 import styles from '../styles.module.scss';
 import Home from '../../../assets/images/ctg.png'
-import Buttons from '../../../components/atoms/Button/Buttons';
+import Button from '../../../components/atoms/Button/Button';
 
 const NavbarCategory = () => {
 
@@ -13,7 +13,7 @@ const NavbarCategory = () => {
             {NavCategory.map(i => <CardCategory key={i.id} headCtg={i.title} item={i.items}/>)}
             <div className={`${styles.navbar__category__img} ' flex flex-col items-end absolute bottom-0 left-2.5 '`}>
                 <img src={Home} alt='home' className='w-72 h-52'/>
-                <Buttons className=' p-2.5	text-xs mb-5 text-gray-400 hover:bg-gray-200 hover:text-black '>  همه ی آگهی های دیوار  </Buttons>
+                <Button className=' p-2.5	text-xs mb-5 text-gray-400 hover:bg-gray-200 hover:text-black '>  همه ی آگهی های دیوار  </Button>
             </div>
         </div>
 

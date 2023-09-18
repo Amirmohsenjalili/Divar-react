@@ -15,7 +15,7 @@ import NavbarCategory from "./components/NavbarCategory";
 import styles from "./styles.module.scss";
 
 //atoms
-import Buttons from "../../components/atoms/Button/Buttons";
+import Button from "../../components/atoms/Button/Button";
 import Input from "../../components/atoms/Input/Input";
 
 //redux
@@ -42,20 +42,20 @@ const inputClick = () => {
               <img src={logo} alt="logo" className={`${styles.navbar__logo} ' h-12	w-12 mx-2 opacity-100 '`}/>
             </Link>
             <hr className={`${styles.navbar__divider} ' inline-block h-6 w-px box-border mr-2.5 '`} />
-            <Buttons  className={`${styles.navbar__button} ' text-xs h-10 items-center p-4 opacity-60 hover:rounded hover:bg-gray-100 hover:font-semibold text-sm font-semibold mr-0 text-zinc-700 ' ${styles.navbar__button_location}`}>
+            <Button  className={`${styles.navbar__button} ' text-xs h-10 items-center p-4 opacity-60 hover:rounded hover:bg-gray-100 hover:font-semibold text-sm font-semibold mr-0 text-zinc-700 ' ${styles.navbar__button_location}`}>
               <img src={loc} alt="loc" className=' w-4 mx-2 text-gray-400 ' />
               <span>تهران</span>
-            </Buttons>
-            <Buttons 
+            </Button>
+            <Button 
                className={`${styles.navbar__button} ' ml-2 h-10 items-center p-2.5 opacity-60 hover:rounded hover:bg-gray-100 hover:font-semibold font-semibold  text-zinc-700 '`}
               onClick={() => dispatch(toggle())}>
               <span>دسته ها</span>
               <img src={ChevronDown} alt="ChevronDown" className='w-4 mx-2 text-gray-400' />
-            </Buttons>
+            </Button>
           </div>
-        <div className={`${styles.navbar__section} ' flex items-center gap-52	'`}>
+        <div className={`${styles.navbar__section} ' flex items-center 2xl:gap-52	'`}>
           <label 
-            className={`' items-center flex gap-2 h-10 px-2 rounded ' ${styles.navbar__label}`}
+            className={`' items-center flex gap-2 h-10 px-2 rounded 2xl:gap-2' ${styles.navbar__label}`}
             onClick={inputClick}>
             <img src={search} alt="search" className='w-4 mx-2 text-gray-400' />
             <Input 
@@ -65,25 +65,25 @@ const inputClick = () => {
               id="Search"
               placeholder="جستجو در همه آگهی ها"/>
           </label>
-            <div className='hidden items-center justify-between h-14 text-xs gap-1.5 lg:flex'>
-              <Buttons className={`${styles.navbar__button} ' text-xs h-10 items-center p-4 opacity-60 hover:rounded hover:bg-gray-100 hover:font-semibold '`}>
+            <div className='hidden items-center justify-between h-14 text-xs gap-1.5 xl:flex'>
+              <Button className={`${styles.navbar__button} ' text-xs h-10 items-center p-4 opacity-60 hover:rounded hover:bg-gray-100 hover:font-semibold '`}>
                 <img src={Person} alt="Person" className='w-4 mx-2 text-gray-400' />
                 <span>دیوار من</span>
-              </Buttons>
-              <Buttons className={`${styles.navbar__button} ' text-xs h-10 items-center p-4 opacity-60 hover:rounded hover:bg-gray-100 hover:font-semibold '`}>
+              </Button>
+              <Button className={`${styles.navbar__button} ' text-xs h-10 items-center p-4 opacity-60 hover:rounded hover:bg-gray-100 hover:font-semibold '`}>
                 <img src={chatIcon} alt="chatIcon" className='w-4 mx-2 text-gray-400' />
                 <span>چت</span>
-              </Buttons>
-              <Buttons className={`${styles.navbar__button} ' text-xs h-10 items-center p-4 opacity-60 hover:rounded hover:bg-gray-100 hover:font-semibold '`}>
+              </Button>
+              <Button className={`${styles.navbar__button} ' text-xs h-10 items-center p-4 opacity-60 hover:rounded hover:bg-gray-100 hover:font-semibold '`}>
                 پشتیبانی
-              </Buttons>
-              <Buttons className={`${styles.navbar__button__theme} ' bg-white px-2 font-semibold h-10 items-center mx-3.5 hover:bg-gray-200 '`} 
+              </Button>
+              <Button className={`${styles.navbar__button__theme} ' bg-white px-2 font-semibold h-10 items-center mx-3.5 hover:bg-gray-200 '`} 
               onClick={() => dispatch(themetoggle())}>
                 <img src={ThemeIcon} alt="ThemeIcon" className=" w-8 "/>
-              </Buttons>
-              <Buttons className={`' font-bold h-10 items-center mx-3.5 opacity-100 text-white px-4 m-4 rounded hover:bg-red-600 ' ${styles.navbar__submitButton}`}>
+              </Button>
+              <Button className={`' font-bold h-10 items-center mx-3.5 opacity-100 text-white px-4 m-4 rounded hover:bg-red-600 ' ${styles.navbar__submitButton}`}>
                 ثبت آگهی
-              </Buttons>
+              </Button>
             </div>
         </div>
       </nav>

@@ -10,7 +10,7 @@ import img from '../../assets/images/ChevronDown.svg';
 import styles from "./styles.module.scss"
 
 //atoms
-import Buttons from '../../components/atoms/Button/Buttons';
+import Button from '../../components/atoms/Button/Button';
 import Input from '../../components/atoms/Input/Input';
 
 //redux
@@ -54,20 +54,20 @@ const Side = () => {
                 <div className='hidden md:block md:fixed'>
                     {SideCategory.map(item => 
                     <div key={item.id}>
-                        <Buttons className={` ' pb-10 text-xs text-black opacity-100 ' ${styles.Sidebar__menu__title}`}>{item.name}</Buttons>
+                        <Button className={` ' pb-10 text-xs text-black opacity-100 ' ${styles.Sidebar__menu__title}`}>{item.name}</Button>
                         {item.items.map(i => 
-                        <Buttons key={i.id} className={` ' text-xs pb-5 gap-2 h-9 items-center opacity-60 ' ${styles.Sidebar__menu__item}`}>
+                        <Button key={i.id} className={` ' text-xs pb-5 gap-2 h-9 items-center opacity-60 ' ${styles.Sidebar__menu__item}`}>
                             {i.img}{i.title}
-                        </Buttons>
+                        </Button>
                         )}
                     </div>
                     )}
                     <div className='mt-5 mb-24 w-52	'>
                         <div className='border-t-2 pt-2'>
-                            <Buttons className={` ' items-center box-content text-xs h-10 ' ${styles.Side__button__item}`}  onClick={toggleShowPlace}>
+                            <Button className={` ' items-center box-content text-xs h-10 ' ${styles.Side__button__item}`}  onClick={toggleShowPlace}>
                                 <img src={img} alt='dropdown' className='pl-2' />
                                 <span>محل</span>
-                            </Buttons>
+                            </Button>
                             {showPlace && 
                                 <div className={styles.Side__button__filterPlace} >
                                 <Input className='rounded w-full h-6 text-xs	px-1.5 opacity-50 mb-2.5' type="text" placeholder="تعیین محل" />
@@ -75,10 +75,10 @@ const Side = () => {
                             }
                         </div>
                         <div className='border-t-2 pt-2'>
-                            <Buttons className={` ' items-center box-content text-xs h-10 ' ${styles.Side__button__item}`}  onClick={toggleShowPrice}>
+                            <Button className={` ' items-center box-content text-xs h-10 ' ${styles.Side__button__item}`}  onClick={toggleShowPrice}>
                                 <img src={img} alt='dropdown' className='pl-2' />
                                 <span>قیمت</span>
-                            </Buttons>
+                            </Button>
                             {showPrice && 
                                 <div className={`' h-24	flex items-center gap-2.5 ' ${styles.Side__button__filterPrice}`}>
                                     <div>
@@ -97,10 +97,10 @@ const Side = () => {
                             }
                         </div>
                         <div className='border-t-2 pt-2'>
-                            <Buttons className={` ' items-center box-content text-xs h-10 ' ${styles.Side__button__item}`} onClick={toggleShowCondition}>
+                            <Button className={` ' items-center box-content text-xs h-10 ' ${styles.Side__button__item}`} onClick={toggleShowCondition}>
                                 <img src={img} alt='dropdown' className='pl-2' />
                                 <span>وضعیت آگهی</span>
-                            </Buttons>
+                            </Button>
                             {showCondition && 
                                 <div className={styles.Side__switchFilter}>
                                     <div className={` ' flex items-center justify-between text-xs opacity-100 p-2.5 ' ${styles.Side__toggleSwitchFilter}`}>

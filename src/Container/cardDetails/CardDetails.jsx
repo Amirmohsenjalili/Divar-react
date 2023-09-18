@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 //styles
 import style from "./CardDetails.module.scss";
 
 //atom
-import Buttons from "../../components/atoms/Button/Buttons";
+import Button from "../../components/atoms/Button/Button";
 
 //img
 import bookmark from "../../assets/images/bookmark.svg";
@@ -23,8 +23,8 @@ const CardDetails = () => {
     const detailsData = data;
     
   return (
-    <div className={`' mx-auto px-4 ' ${style.contaner}`}>
-      <div>
+    <div className={`' mx-auto px-4 sm:max-w-2xl lg:max-w-5xl  ' ${style.contaner}`}>
+      <div className=" flex flex-col justify-center items-center w-4/5 mx-auto my-0 lg:block ">
         <Link
           to={"/"}
           className="py-8 px-0 flex items-center text-xs leading-loose m-0 overflow-x-auto scroll-smooth opacity-60"
@@ -33,9 +33,9 @@ const CardDetails = () => {
           {detailsData?.sections[0].widgets[0].data.parent_items[1].title}/
           <span className="opacity-50">{detailsData?.seo.web_info.title}</span>
         </Link>
-        <div className="flex flex-wrap -mx-2">
+        <div className="flex flex-col items-center w-4/5 lg:w-full lg:flex lg:flex-row lg:items-start">
           <div className={style.right_section}>
-            <div>
+            <div className=" flex flex-col items-center justify-center text-center lg:text-right lg:items-start ">
               <div className=" text-2xl font-semibold leading-normal ">
                 {detailsData?.share.title}
               </div>
@@ -43,16 +43,16 @@ const CardDetails = () => {
                 {detailsData?.sections[1].widgets[0].data.subtitle}
               </div>
               <div className="flex items-center my-4 mx-0">
-                <Buttons className="p-2.5 bg-red-800 text-white text-base font-medium h-10 justify-center hover:bg-red-600 items-center inline-flex">
+                <Button className="p-2.5 bg-red-800 text-white text-base font-medium h-10 justify-center hover:bg-red-600 items-center inline-flex">
                   <span className=" rounded truncate pointer-events-none">
                     اطلاعات تماس
                   </span>
-                </Buttons>
-                <Buttons className="mr-2 items-center justify-center h-10 hover:bg-gray-100 ">
+                </Button>
+                <Button className="mr-2 items-center justify-center h-10 hover:bg-gray-100 ">
                   <span className="inline-flex border-solid items-center justify-center border-gray-500 w-36 border-2 h-10 rounded opacity-70">
                     چت
                   </span>
-                </Buttons>
+                </Button>
                 <span className="mr-auto w-10 h-10 inline-flex items-center justify-center p-0 opacity-60 cursor-pointer hover:bg-gray-200 hover:rounded-full duration-700 hover:duration-700">
                   <img src={bookmark} alt="bookmark" />
                 </span>
@@ -61,8 +61,8 @@ const CardDetails = () => {
                 </span>
               </div>
               <div>
-                <div className="flex items-start mt-6">
-                  <div className="flex items-end">توضیحات</div>
+                <div className="inline-flex items-start mt-6">
+                  <div className="inline-flex items-end mb-4">توضیحات</div>
                 </div>
                 <div>
                   <div className="min-w-0">
@@ -74,7 +74,7 @@ const CardDetails = () => {
               </div>
             </div>
           </div>
-          <div className={style.left_section}>
+          <div className={`${style.left_section} mt-10 lg:mr-auto lg:mt-0 `}>
             <Slider cardImage={detailsData?.sections[3]?.widgets[0]?.data?.items} />
             <div className="my-4 flex flex-col w-auto">
               <textarea
