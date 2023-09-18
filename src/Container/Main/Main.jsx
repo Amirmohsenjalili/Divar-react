@@ -7,7 +7,6 @@ import styles from "./Main.module.scss";
 //redux
 import { useSelector } from "react-redux";
 import { useGetAllCardsQuery } from "../../services/rtkQuery";
-
 //atoms
 import ItemCard from "../../components/atoms/Card/ItemCard";
 
@@ -45,7 +44,7 @@ const Main = () => {
       </h1>
       <div>
         <div
-          className={`' flex flex-col flex-wrap items-center gap-2.5 mb-2.5 lg:flex-col lg:justify-end ' ${styles.main__item} `}
+          className={` ' flex flex-col flex-wrap items-center gap-2.5 mb-2.5 lg:flex-row lg:justify-end ' ${styles.main__item} `}
         >
           {cards.map((i, index) => (
             <ItemCard
