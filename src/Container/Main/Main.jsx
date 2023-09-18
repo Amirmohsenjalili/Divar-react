@@ -1,56 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { FixedSizeList as List } from "react-window";
 
 //styles
 import styles from "./Main.module.scss";
 
 //redux
-import { useDispatch, useSelector } from "react-redux";
-import { fetchData } from "../../store/cards/cardsSlice";
+import { useSelector } from "react-redux";
+import { useGetAllCardsQuery } from "../../services/rtkQuery";
 
 //atoms
 import ItemCard from "../../components/atoms/Card/ItemCard";
 
-
 const Main = () => {
-
   const dark = useSelector((state) => state.theme.dark);
-  const cards = useSelector((state) => state.cards.cards);
-  const loading = useSelector((state) => state.cards.loading);
-  const hasMore = useSelector((state) => state.cards.hasMore);
-  const dispatch = useDispatch();
-
-  const Row = ({ index, style, data }) => {
-    const card = data[index];
-    return (
-      <div style={{ 
-        ...style, 
-        display: "gride",
-        width: "fit-content",
-
-      }} key={index}>
-        <ItemCard
-          title={card.data.title}
-          category={card.data.top_description_text}
-          footer={card.data.bottom_description_text}
-          price={card.data.middle_description_text}
-          image={card?.data?.image_url?.[0]?.src}
-        />
-      </div>
-    );
-  };
+  const [ page, setPage ] = useState(1)
+  const [ lastPostDate, setLastPostDate ] = useState(1694525384153440)
+  const { data, isLoading, error } = useGetAllCardsQuery({ page, lastPostDate });
+  const [cards, setCards] = useState(data?.web_widgets?.post_list || [] );
+  const hasMore = data?.web_widgets?.post_list?.length > 0;
   const { ref, inView } = useInView({
     threshold: 0,
   });
 
   useEffect(() => {
     if (inView) {
-      dispatch(fetchData());
+      setPage(page + 1);
+      setLastPostDate(data?.last_post_date)
+      setCards([...cards, ...data?.web_widgets?.post_list || []])
     }
   }, [inView]);
-
-
 
   return (
     <div
@@ -69,27 +47,28 @@ const Main = () => {
         <div
           className={`' flex flex-col flex-wrap items-center gap-2.5 mb-2.5 lg:flex-col lg:justify-end ' ${styles.main__item} `}
         >
-              <List
-                width={400}
-                height={800}
-                itemCount={cards.length}
-                itemSize={200}
-                itemData={cards}
-                style={{direction:"rtl"}}
-              >
-                {Row}
-              </List>
+          {cards.map((i, index) => (
+            <ItemCard
+              key={index}
+              title={i.data.title}
+              category={i.data.top_description_text}
+              footer={i.data.bottom_description_text}
+              price={i.data.middle_description_text}
+              image={i?.data?.image_url?.[0]?.src}
+              token={i.data.token}
+            />
+          ))}
         </div>
-        {loading && <div className="m-auto">...Loading data</div>}
+        {isLoading && <div className="m-auto">...Loading data</div>}
         {hasMore && (
           <div className="m-auto" ref={ref}>
             ...loading more data
           </div>
         )}
+        {error && <div className="m-auto">{error.message}</div>}
       </div>
     </div>
   );
 };
 
 export default Main;
-

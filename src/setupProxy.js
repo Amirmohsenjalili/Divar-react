@@ -1,5 +1,4 @@
-
-const { createProxyMiddleware } = require('http-proxy-middleware');
+const { createProxyMiddleware } = require("http-proxy-middleware");
 
 module.exports = function addProxyMiddleware(app) {
   app.use(
@@ -10,8 +9,16 @@ module.exports = function addProxyMiddleware(app) {
       pathRewrite: {
         '^/api': '', // rewrite path
       },
-    }),
+    })
+  );
+  app.use(
+    '/apiDetails',
+    createProxyMiddleware({
+      target: 'https://api.divar.ir/v8/posts-v2/web/AZvb19Or',
+      changeOrigin: true,
+      pathRewrite: {
+        '^/apiDetails': '', // rewrite path
+      },
+    })
   );
 };
-
-
