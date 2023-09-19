@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 //styles
 import style from "./CardDetails.module.scss";
@@ -18,9 +18,10 @@ import { useGetAllDetailsCardsQuery } from "../../services/rtkQueryDitals";
 import Slider from "../../components/atoms/Slider/Slider";
 
 const CardDetails = () => {
-  
-    const { data, isLoading, error } = useGetAllDetailsCardsQuery();
+    const cardId = useParams()
+    const { data, isLoading, error } = useGetAllDetailsCardsQuery(cardId.id) || {};
     const detailsData = data;
+    console.log(data);
     
   return (
     <div className={`' mx-auto px-4 sm:max-w-2xl lg:max-w-5xl  ' ${style.contaner}`}>

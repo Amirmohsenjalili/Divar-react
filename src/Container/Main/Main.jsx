@@ -13,7 +13,7 @@ import ItemCard from "../../components/atoms/Card/ItemCard";
 const Main = () => {
   const dark = useSelector((state) => state.theme.dark);
   const [ page, setPage ] = useState(1)
-  const [ lastPostDate, setLastPostDate ] = useState(1694525384153440)
+  const [ lastPostDate, setLastPostDate ] = useState(1695057468195495)
   const { data, isLoading, error } = useGetAllCardsQuery({ page, lastPostDate });
   const [cards, setCards] = useState(data?.web_widgets?.post_list || [] );
   const hasMore = data?.web_widgets?.post_list?.length > 0;
@@ -28,7 +28,6 @@ const Main = () => {
       setCards([...cards, ...data?.web_widgets?.post_list || []])
     }
   }, [inView]);
-
   return (
     <div
       className={

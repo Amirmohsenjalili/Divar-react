@@ -14,7 +14,9 @@ module.exports = function addProxyMiddleware(app) {
   app.use(
     '/apiDetails',
     createProxyMiddleware({
-      target: 'https://api.divar.ir/v8/posts-v2/web/AZvb19Or',
+      target: function(req) {
+        return 'https://api.divar.ir/v8/posts-v2/web' + req.params.id;
+      },
       changeOrigin: true,
       pathRewrite: {
         '^/apiDetails': '', // rewrite path
