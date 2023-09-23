@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Thumbs, FreeMode } from 'swiper/modules';
 
 // //style 
-import style from "./Slider.module.scss"
+import style from "./style.module.scss"
 import "swiper/css";
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';

@@ -10,8 +10,8 @@ import img from '../../assets/images/ChevronDown.svg';
 import styles from "./styles.module.scss"
 
 //atoms
-import Button from '../../components/atoms/Button/Button';
-import Input from '../../components/atoms/Input/Input';
+import Button from '../../components/Button';
+import Input from '../../components/Input';
 
 //redux
 import { useSelector } from 'react-redux';

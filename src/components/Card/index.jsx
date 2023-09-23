@@ -4,13 +4,12 @@ import { Link } from "react-router-dom"
 //style
 import styles from "./styles.module.scss";
 //img
-import notPhoto from "../../../assets/images/notPhoto.png";
+import notPhoto from "../../assets/images/notPhoto.png";
 
 const ItemCard = ({ title, category, price, image, footer, token }) => {
   
   return (
-
-    <Link to={`/CardDetails/${title}`}
+    <Link to={`/CardsDetails/${token}`}
       className={`${styles.container} ' rounded min-w-max flex p-4 justify-between gap-2 flex-auto '`}
     >
       <div className={" flex flex-col gap-2 mt-2 "}>
