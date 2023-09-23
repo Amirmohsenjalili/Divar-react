@@ -3,7 +3,7 @@ import NavCategory from '../../../__mock__/NavCategory';
 import CardCategory from './CardCategory';
 import styles from '../styles.module.scss';
 import Home from '../../../assets/images/ctg.png'
-import Button from '../../../components/atoms/Button/Button';
+import Button from '../../../components/Button';
 
 const NavbarCategory = () => {
 

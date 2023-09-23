@@ -6,7 +6,7 @@ export const cardsApi = createApi({
   endpoints: (builder) => ({
     getAllCards: builder.query({
       query: ({ page, lastPostDate }) => ({
-        url: "",
+        url: "/web-search/1/ROOT",
         method: "POST",
         body: {
             page,
@@ -15,8 +15,14 @@ export const cardsApi = createApi({
         }
       }),
     }),
+    getAllDetailsCards: builder.query({
+      query: ({token}) => ({
+          url: `/posts-v2/web/${token}`,
+          method: "GET",
+      })
+  })
   }),
 });
 
 
-export const { useGetAllCardsQuery } = cardsApi;
+export const { useGetAllCardsQuery, useGetAllDetailsCardsQuery } = cardsApi;

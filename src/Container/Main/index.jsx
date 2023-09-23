@@ -2,18 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 //styles
-import styles from "./Main.module.scss";
+import styles from "./style.module.scss";
 
 //redux
 import { useSelector } from "react-redux";
 import { useGetAllCardsQuery } from "../../services/rtkQuery";
 //atoms
-import ItemCard from "../../components/atoms/Card/ItemCard";
+import ItemCard from "../../components/Card";
 
 const Main = () => {
   const dark = useSelector((state) => state.theme.dark);
   const [ page, setPage ] = useState(1)
-  const [ lastPostDate, setLastPostDate ] = useState(1694525384153440)
+  const [ lastPostDate, setLastPostDate ] = useState(1695455734885063)
   const { data, isLoading, error } = useGetAllCardsQuery({ page, lastPostDate });
   const [cards, setCards] = useState(data?.web_widgets?.post_list || [] );
   const hasMore = data?.web_widgets?.post_list?.length > 0;
@@ -28,7 +28,6 @@ const Main = () => {
       setCards([...cards, ...data?.web_widgets?.post_list || []])
     }
   }, [inView]);
-
   return (
     <div
       className={
@@ -58,14 +57,18 @@ const Main = () => {
             />
           ))}
         </div>
-        {isLoading && <div className="m-auto">...Loading data</div>}
+      </div>
+        {isLoading && 
+            <div className="flex m-auto">
+              <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-zinc-500"></div>
+            </div>
+          }
         {hasMore && (
-          <div className="m-auto" ref={ref}>
-            ...loading more data
-          </div>
+            <div className="flex m-auto" ref={ref}>
+              <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-zinc-500"></div>
+            </div>
         )}
         {error && <div className="m-auto">{error.message}</div>}
-      </div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
-import Main from "./Main/Main";
-import Side from "./Sidebar/Side";
+import Main from "./Main";
+import Side from "./Sidebar";
 
 const indext = () => {
   return (

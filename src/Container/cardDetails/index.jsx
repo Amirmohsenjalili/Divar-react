@@ -1,11 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 //styles
-import style from "./CardDetails.module.scss";
+import style from "./style.module.scss";
 
 //atom
-import Button from "../../components/atoms/Button/Button";
+import Button from "../../components/Button";
+import Slider from "../../components/Slider";
 
 //img
 import bookmark from "../../assets/images/bookmark.svg";
@@ -14,17 +15,17 @@ import Question from "../../assets/images/Question.svg";
 import Exclamation from "../../assets/images/Exclamation.svg";
 
 //redux
-import { useGetAllDetailsCardsQuery } from "../../services/rtkQueryDitals";
-import Slider from "../../components/atoms/Slider/Slider";
+import { useGetAllDetailsCardsQuery } from "../../services/rtkQuery";
 
 const CardDetails = () => {
-  
-    const { data, isLoading, error } = useGetAllDetailsCardsQuery();
-    const detailsData = data;
+  const param = useParams()
+  const token = param.id
+  const { data, isLoading, error } = useGetAllDetailsCardsQuery({token});
+  const detailsData = data;
     
   return (
     <div className={`' mx-auto px-4 sm:max-w-2xl lg:max-w-5xl  ' ${style.contaner}`}>
-      <div className=" flex flex-col justify-center items-center w-4/5 mx-auto my-0 lg:block ">
+      <div className=" flex flex-col justify-center items-center w-auto mx-auto my-0 lg:block ">
         <Link
           to={"/"}
           className="py-8 px-0 flex items-center text-xs leading-loose m-0 overflow-x-auto scroll-smooth opacity-60"
@@ -59,6 +60,8 @@ const CardDetails = () => {
                 <span className="w-10 h-10 inline-flex items-center justify-center p-0 opacity-60 cursor-pointer hover:bg-gray-200 hover:rounded-full duration-700 hover:duration-700">
                   <img src={share} alt="share" />
                 </span>
+              </div>
+              <div>
               </div>
               <div>
                 <div className="inline-flex items-start mt-6">
