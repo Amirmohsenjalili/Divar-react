@@ -25,12 +25,12 @@ const Slider = ({cardImage}) => {
             >
                 {cardImage?.map((i, index) => (
                 <SwiperSlide key={index}>
-                    <img src={i.image.url} alt={i.image.alt} className="object-cover w-full h-96 rounded"/>
+                    <img src={i.image.url} alt={i.image.alt} className="object-cover w-full rounded h-60 lg:h-96"/>
                 </SwiperSlide>))}
             </Swiper>
             <Swiper
                 onSwiper={setThumbsSwiper}
-                spaceBetween={10}
+                spaceBetween={8}
                 slidesPerView={6}
                 watchSlidesProgress={true}
                 modules={[Navigation, Thumbs]}
@@ -38,7 +38,7 @@ const Slider = ({cardImage}) => {
                 >
                     {cardImage?.map((i, index) => (
                         <SwiperSlide key={index}>
-                            <img src={i.image.url} alt={i.image.alt} className="object-cover w-20 h-20 rounded"/>
+                            <img src={i.image.url} alt={i.image.alt} className="object-cover w-full h-10 rounded lg:h-20"/>
                         </SwiperSlide>))
                     }
             </Swiper>
