@@ -34,12 +34,12 @@ const CardDetails: React.FC = () => {
            data?.sections[6]?.widgets[0]?.data?.parent_items[0]?.title :
            data?.analytics?.cat1 === "craftsmen" ?
            data?.sections[4]?.widgets[0]?.data?.parent_items[0]?.title :
-           data?.sections[0]?.widgets[0]?.data?.parent_items[0]?.title}//
+           data?.sections[0]?.widgets[0]?.data?.parent_items[0]?.title}
           {data?.analytics?.cat1 === "real-estate" ?
            data?.sections[6]?.widgets[0]?.data?.parent_items[1]?.title : 
            data?.analytics?.cat1 === "craftsmen" ? 
            data?.sections[4]?.widgets[0]?.data?.parent_items[1]?.title :
-           data?.sections[0]?.widgets[0]?.data?.parent_items[1]?.title}//
+           data?.sections[0]?.widgets[0]?.data?.parent_items[1]?.title}
           <span className="opacity-50">
           {data?.analytics?.cat1 === "real-estate" ?
            data?.sections[6]?.widgets[0]?.data?.parent_items[2]?.title : 
