@@ -1,74 +1,74 @@
-# دیوار
+# Divar
 
-فرانت‌اند آگهی‌های تهران، با چیدمان [divar.ir](https://divar.ir/s/tehran). داده از API عمومی دیوار می‌آید و این پروژه بک‌اند جدا ندارد.
+A Tehran classifieds frontend laid out like [divar.ir](https://divar.ir/s/tehran). Listings come from Divar's public API. This project has no separate backend.
 
-## امکانات
+## Features
 
-- لیست آگهی‌های تهران با اسکرول صفحهٔ بعد
-- جستجو و انتخاب دسته
-- فیلتر محل، قیمت و «فقط عکس‌دار» روی آگهی‌های بارگذاری‌شده
-- صفحهٔ جزئیات هر آگهی با گالری، توضیحات و یادداشت
-- تم روشن و تیره
+- Tehran listing feed with infinite scroll
+- Search and category selection
+- Place, price, and photo-only filters on loaded posts
+- Post page with gallery, description, and a private note
+- Light and dark theme
 
-دیوار من، چت و ثبت آگهی فقط دکمه‌های هدر هستند. ورود و ساخت آگهی در این پروژه نیست.
+My Divar, chat, and submit-ad are header buttons only. Sign-in and creating a post are not part of this project.
 
-## تکنولوژی
+## Stack
 
-- React 18 و Vite
-- Redux Toolkit و RTK Query
+- React 18 and Vite
+- Redux Toolkit and RTK Query
 - React Router
-- Tailwind CSS و کامپوننت‌های `Button` و `Input`
-- nginx برای سرو نسخهٔ ساخته‌شده در داکر
+- Tailwind CSS, plus `Button` and `Input`
+- nginx to serve the production build in Docker
 
-## ساختار
+## Structure
 
 ```
 src/
-  app/            روت‌ها و پوسته
-  pages/          صفحهٔ اصلی و صفحهٔ آگهی
+  app/            routes and app shell
+  pages/          home and post page
   components/
-    layout/       هدر، منوی دسته، سایدبار
-    post/         کارت، لیست و گالری
-    ui/           قطعه‌های پایه
-  services/       درخواست‌های دیوار
-  store/          تم و فیلترها
-  data/           دسته‌ها
-  styles/         توکن‌ها و استایل سراسری
+    layout/       header, category menu, sidebar
+    post/         card, list, and gallery
+    ui/           base components
+  services/       Divar requests
+  store/          theme and filters
+  data/           categories
+  styles/         tokens and global styles
 ```
 
-## اجرای محلی
+## Local development
 
 ```bash
 pnpm install
 pnpm start
 ```
 
-اپ روی [http://localhost:3006](http://localhost:3006) باز می‌شود. در حالت توسعه، Vite این مسیرها را به دیوار پروکسی می‌کند:
+The app opens at [http://localhost:3006](http://localhost:3006). In development, Vite proxies these paths to Divar:
 
-- `POST /api/search` به `https://api.divar.ir/v8/postlist/w/search`
-- `GET /api/posts/:token` به `https://api.divar.ir/v8/posts-v2/web/:token`
+- `POST /api/search` to `https://api.divar.ir/v8/postlist/w/search`
+- `GET /api/posts/:token` to `https://api.divar.ir/v8/posts-v2/web/:token`
 
-اسکریپت‌ها:
+Scripts:
 
-| دستور          | کار                       |
-| -------------- | ------------------------- |
-| `pnpm start`   | سرور توسعه                |
-| `pnpm build`   | خروجی تولید در `dist`     |
-| `pnpm preview` | پیش‌نمایش خروجی ساخته‌شده |
+| Command | What it does |
+| --- | --- |
+| `pnpm start` | Development server |
+| `pnpm build` | Production build in `dist` |
+| `pnpm preview` | Preview the production build |
 
-`pnpm preview` پروکسی API ندارد. برای دیدن آگهی‌های واقعی بعد از بیلد، از داکر استفاده کنید.
+`pnpm preview` does not proxy the API. To see real listings from a production build, use Docker.
 
-## داکر
+## Docker
 
-ایمیج دو مرحله‌ای است: ابتدا Vite خروجی را می‌سازد، بعد nginx همان فایل‌ها را سرو می‌کند و پروکسی API را هم انجام می‌دهد.
+The image has two stages. Vite builds the app, then nginx serves the files and proxies the API.
 
 ```bash
 docker compose up --build
 ```
 
-سپس [http://localhost:3006](http://localhost:3006) را باز کنید.
+Open [http://localhost:3006](http://localhost:3006).
 
-ساخت و اجرا بدون Compose:
+Build and run without Compose:
 
 ```bash
 docker build -t divar .
