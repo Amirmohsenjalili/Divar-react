@@ -37,7 +37,9 @@ export default function PostList() {
     setPages((current) => {
       const base = current.key === requestKey ? current.posts : [];
       const seen = new Set(base.map((post) => post.token));
-      const fresh = pageData.posts.filter((post) => post.token && !seen.has(post.token));
+      const fresh = pageData.posts.filter(
+        (post) => post.token && !seen.has(post.token),
+      );
       if (current.key === requestKey && fresh.length === 0) return current;
       return { key: requestKey, posts: [...base, ...fresh] };
     });
@@ -82,7 +84,7 @@ export default function PostList() {
   return (
     <section className="min-w-0 flex-1 px-4 py-4">
       <h1 className="mb-3 text-xs text-muted-foreground">{heading}</h1>
-      <div className="grid grid-cols-1 gap-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
         {visible.map((post) => (
           <PostCard key={post.token} post={post} />
         ))}

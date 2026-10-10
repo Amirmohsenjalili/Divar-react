@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import CategoryMenu from "@/components/layout/CategoryMenu";
 import { closeMenu, setQuery, toggleMenu } from "@/store/categorySlice";
 import { toggleTheme } from "@/store/themeSlice";
+import { cn } from "@/lib/utils";
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -55,7 +56,7 @@ export default function Header() {
             onClick={() => dispatch(toggleMenu())}
           >
             دسته‌ها
-            <ChevronDown className="h-4 w-4" />
+            <ChevronDown className={cn("h-4 w-4 transition-transform", menuOpen && "rotate-180")} />
           </Button>
         </div>
 
