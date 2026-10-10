@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# دیوار
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+فرانت‌اند آگهی‌های تهران، با چیدمان [divar.ir](https://divar.ir/s/tehran). داده از API عمومی دیوار می‌آید و این پروژه بک‌اند جدا ندارد.
 
-## Available Scripts
+## امکانات
 
-In the project directory, you can run:
+- لیست آگهی‌های تهران با اسکرول صفحهٔ بعد
+- جستجو و انتخاب دسته
+- فیلتر محل، قیمت و «فقط عکس‌دار» روی آگهی‌های بارگذاری‌شده
+- صفحهٔ جزئیات هر آگهی با گالری، توضیحات و یادداشت
+- تم روشن و تیره
 
-### `npm start`
+دیوار من، چت و ثبت آگهی فقط دکمه‌های هدر هستند. ورود و ساخت آگهی در این پروژه نیست.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## تکنولوژی
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- React 18 و Vite
+- Redux Toolkit و RTK Query
+- React Router
+- Tailwind CSS و کامپوننت‌های `Button` و `Input`
+- nginx برای سرو نسخهٔ ساخته‌شده در داکر
 
-### `npm test`
+## ساختار
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+src/
+  app/            روت‌ها و پوسته
+  pages/          صفحهٔ اصلی و صفحهٔ آگهی
+  components/
+    layout/       هدر، منوی دسته، سایدبار
+    post/         کارت، لیست و گالری
+    ui/           قطعه‌های پایه
+  services/       درخواست‌های دیوار
+  store/          تم و فیلترها
+  data/           دسته‌ها
+  styles/         توکن‌ها و استایل سراسری
+```
 
-### `npm run build`
+## اجرای محلی
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+pnpm install
+pnpm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+اپ روی [http://localhost:3006](http://localhost:3006) باز می‌شود. در حالت توسعه، Vite این مسیرها را به دیوار پروکسی می‌کند:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `POST /api/search` به `https://api.divar.ir/v8/postlist/w/search`
+- `GET /api/posts/:token` به `https://api.divar.ir/v8/posts-v2/web/:token`
 
-### `npm run eject`
+اسکریپت‌ها:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+| دستور          | کار                       |
+| -------------- | ------------------------- |
+| `pnpm start`   | سرور توسعه                |
+| `pnpm build`   | خروجی تولید در `dist`     |
+| `pnpm preview` | پیش‌نمایش خروجی ساخته‌شده |
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`pnpm preview` پروکسی API ندارد. برای دیدن آگهی‌های واقعی بعد از بیلد، از داکر استفاده کنید.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## داکر
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+ایمیج دو مرحله‌ای است: ابتدا Vite خروجی را می‌سازد، بعد nginx همان فایل‌ها را سرو می‌کند و پروکسی API را هم انجام می‌دهد.
 
-## Learn More
+```bash
+docker compose up --build
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+سپس [http://localhost:3006](http://localhost:3006) را باز کنید.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+ساخت و اجرا بدون Compose:
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+docker build -t divar .
+docker run --rm -p 3006:80 divar
+```
