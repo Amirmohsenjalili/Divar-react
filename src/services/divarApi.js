@@ -32,9 +32,20 @@ function toPostList(raw) {
   };
 }
 
+function postImages(raw) {
+  const slider = widgetData(raw, "IMAGE_SLIDER_ROW")?.items ?? [];
+  const carousel = widgetData(raw, "IMAGE_CAROUSEL")?.items ?? [];
+  return (slider.length ? slider : carousel)
+    .map((item) => ({
+      url: item.image_url || item.image?.url,
+      alt: item.image?.alt || raw.share?.title || "",
+    }))
+    .filter((item) => item.url);
+}
+
 function toPostDetail(raw) {
   const breadcrumb = widgetData(raw, "BREADCRUMB");
-  const images = widgetData(raw, "IMAGE_CAROUSEL")?.items ?? [];
+  const images = postImages(raw);
   const descriptions = widgetsOf(raw)
     .filter((widget) => widget.widget_type === "DESCRIPTION_ROW")
     .map((widget) => widget.data?.text || "")
@@ -53,12 +64,7 @@ function toPostDetail(raw) {
       breadcrumb?.current_page_title || web.title,
     ].filter(Boolean),
     description: descriptions[0] || "",
-    images: images
-      .map((item) => ({
-        url: item.image?.url,
-        alt: item.image?.alt || raw.share?.title || "",
-      }))
-      .filter((item) => item.url),
+    images,
   };
 }
 

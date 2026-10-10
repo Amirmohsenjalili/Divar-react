@@ -2,6 +2,8 @@
 
 A Tehran classifieds frontend laid out like [divar.ir](https://divar.ir/s/tehran). Listings come from Divar's public API. This project has no separate backend.
 
+Live demo: [divar-react.amirmohsen-jalili2016.workers.dev](https://divar-react.amirmohsen-jalili2016.workers.dev/)
+
 ## Features
 
 - Tehran listing feed with infinite scroll
